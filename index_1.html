@@ -1,0 +1,306 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<link href="https://fonts.googleapis.com/css?family=Mali" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Mali|Mountains+of+Christmas" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+<html>
+<title>Have you been naughty?</title>
+<script type="text/javascript" src="snowstorm.js"></script>
+<script type="text/javascript">
+snowStorm.animationInterval = 20;
+snowStorm.vMaxX = 8;
+snowStorm.vMaxY = 5;
+snowStorm.snowStick = true;
+snowStorm.freezeOnBlur = false;
+snowStorm.snowColor = '#e7def9'; // blue-ish snow!?
+snowStorm.flakesMaxActive = 96;  // show more snow on screen at once
+snowStorm.useTwinkleEffect = false; // let the snow flicker in and out of view
+</script>
+<ul id="ul">
+  <li><a href="#Nerdy">Super nerdy christmas facts</a></li>
+</ul>
+<script type="text/javascript">
+// <![CDATA[
+var colour="#f4dc02";
+var sparkles=120;
+
+/****************************
+*  Tinkerbell Magic Sparkle *
+* (c) 2005 mf2fm web-design *
+*  http://www.mf2fm.com/rv  *
+* DON'T EDIT BELOW THIS BOX *
+****************************/
+var x=ox=400;
+var y=oy=300;
+var swide=800;
+var shigh=600;
+var sleft=sdown=0;
+var tiny=new Array();
+var star=new Array();
+var starv=new Array();
+var starx=new Array();
+var stary=new Array();
+var tinyx=new Array();
+var tinyy=new Array();
+var tinyv=new Array();
+
+window.onload=function() { if (document.getElementById) {
+  var i, rats, rlef, rdow;
+  for (var i=0; i<sparkles; i++) {
+    var rats=createDiv(3, 3);
+    rats.style.visibility="hidden";
+    document.body.appendChild(tiny[i]=rats);
+    starv[i]=0;
+    tinyv[i]=0;
+    var rats=createDiv(5, 5);
+    rats.style.backgroundColor="transparent";
+    rats.style.visibility="hidden";
+    var rlef=createDiv(1, 5);
+    var rdow=createDiv(5, 1);
+    rats.appendChild(rlef);
+    rats.appendChild(rdow);
+    rlef.style.top="2px";
+    rlef.style.left="0px";
+    rdow.style.top="0px";
+    rdow.style.left="2px";
+    document.body.appendChild(star[i]=rats);
+  }
+  set_width();
+  sparkle();
+}}
+
+function sparkle() {
+  var c;
+  if (x!=ox || y!=oy) {
+    ox=x;
+    oy=y;
+    for (c=0; c<sparkles; c++) if (!starv[c]) {
+      star[c].style.left=(starx[c]=x)+"px";
+      star[c].style.top=(stary[c]=y)+"px";
+      star[c].style.clip="rect(0px, 5px, 5px, 0px)";
+      star[c].style.visibility="visible";
+      starv[c]=50;
+      break;
+    }
+  }
+  for (c=0; c<sparkles; c++) {
+    if (starv[c]) update_star(c);
+    if (tinyv[c]) update_tiny(c);
+  }
+  setTimeout("sparkle()", 40);
+}
+
+function update_star(i) {
+  if (--starv[i]==25) star[i].style.clip="rect(1px, 4px, 4px, 1px)";
+  if (starv[i]) {
+    stary[i]+=1+Math.random()*3;
+    if (stary[i]<shigh+sdown) {
+      star[i].style.top=stary[i]+"px";
+      starx[i]+=(i%5-2)/5;
+      star[i].style.left=starx[i]+"px";
+    }
+    else {
+      star[i].style.visibility="hidden";
+      starv[i]=0;
+      return;
+    }
+  }
+  else {
+    tinyv[i]=50;
+    tiny[i].style.top=(tinyy[i]=stary[i])+"px";
+    tiny[i].style.left=(tinyx[i]=starx[i])+"px";
+    tiny[i].style.width="2px";
+    tiny[i].style.height="2px";
+    star[i].style.visibility="hidden";
+    tiny[i].style.visibility="visible"
+  }
+}
+
+function update_tiny(i) {
+  if (--tinyv[i]==25) {
+    tiny[i].style.width="1px";
+    tiny[i].style.height="1px";
+  }
+  if (tinyv[i]) {
+    tinyy[i]+=1+Math.random()*3;
+    if (tinyy[i]<shigh+sdown) {
+      tiny[i].style.top=tinyy[i]+"px";
+      tinyx[i]+=(i%5-2)/5;
+      tiny[i].style.left=tinyx[i]+"px";
+    }
+    else {
+      tiny[i].style.visibility="hidden";
+      tinyv[i]=0;
+      return;
+    }
+  }
+  else tiny[i].style.visibility="hidden";
+}
+
+document.onmousemove=mouse;
+function mouse(e) {
+  set_scroll();
+  y=(e)?e.pageY:event.y+sdown;
+  x=(e)?e.pageX:event.x+sleft;
+}
+
+function set_scroll() {
+  if (typeof(self.pageYOffset)=="number") {
+    sdown=self.pageYOffset;
+    sleft=self.pageXOffset;
+  }
+  else if (document.body.scrollTop || document.body.scrollLeft) {
+    sdown=document.body.scrollTop;
+    sleft=document.body.scrollLeft;
+  }
+  else if (document.documentElement && (document.documentElement.scrollTop || document.documentElement.scrollLeft)) {
+    sleft=document.documentElement.scrollLeft;
+	sdown=document.documentElement.scrollTop;
+  }
+  else {
+    sdown=0;
+    sleft=0;
+  }
+}
+
+window.onresize=set_width;
+function set_width() {
+  if (typeof(self.innerWidth)=="number") {
+    swide=self.innerWidth;
+    shigh=self.innerHeight;
+  }
+  else if (document.documentElement && document.documentElement.clientWidth) {
+    swide=document.documentElement.clientWidth;
+    shigh=document.documentElement.clientHeight;
+  }
+  else if (document.body.clientWidth) {
+    swide=document.body.clientWidth;
+    shigh=document.body.clientHeight;
+  }
+}
+
+function createDiv(height, width) {
+  var div=document.createElement("div");
+  div.style.position="absolute";
+  div.style.height=height+"px";
+  div.style.width=width+"px";
+  div.style.overflow="hidden";
+  div.style.backgroundColor=colour;
+  return (div);
+}
+// ]]>
+</script>
+
+<style type="text/css">
+		body {
+			background: #000000;
+		}
+		.countdownContainer{
+			position: absolute;;
+			color: #f7ecad;
+			top: 50%;
+			left: 50%;
+			transform : translateX(-50%)
+			translateY(-50%);
+			text-align: center;
+			background-image: radial-gradient(circle,#08d612,#005b21);
+			padding: 20px;
+			text-shadow: 3px 1px black;
+			font-family: 'Lobster', cursive;
+					}
+		#R {
+			color: red;
+			text-shadow: 3px 2px black;
+			font-family: 'Mountains of Christmas', cursive;
+		}
+		#p {
+			color:red;
+		}
+		.info {
+			font-size: 75px;
+			
+		}
+		.time {
+			font-size: 24px;
+			font-family: 'Mountains of Christmas', cursive;
+			color: white;
+			text-shadow: 1px 1px black;
+		}
+		ul {
+    		list-style-type: none;
+    		margin: 0;
+    		padding: 0;
+    	}
+    	li{
+    		display: inline;
+    	}
+    	li a{
+    		display: inline-block;
+   			color: white;
+    		text-align: center;
+    		padding: 14px 16px;
+    		text-decoration: none;
+    	}
+    	li a:hover {
+    		background-color: red;
+    		color:white;
+    	}
+		</style>
+	<body>
+		<table class="countdownContainer">
+			<tr class="info">
+				<td colspan="5" id="R">Christmas Reckoning</td> 
+			</tr>
+			<tr class="info">
+				<td id="days">120</td>
+				<td id="hours">4</td>
+				<td id="minutes">12</td>
+				<td id="seconds">22</td>
+				
+			</tr>
+			<tr>
+				<td class="time">Days</td>
+				<td class="time">Hours</td>
+				<td class="time">Minutes</td>
+				<td class="time">Seconds</td>
+				
+			</tr>
+		</table>
+		<script type="text/javascript">
+			function countdown(){
+				var now = new Date();
+				var eventDate = new Date(now.getFullYear(), 11, 25);
+				var currentTiime = now.getTime();
+				var eventTime = eventDate.getTime();
+
+				var remTime = eventTime - currentTiime;
+
+				var ms = Math.floor(remTime);
+				var s = Math.floor(ms / 1000);	
+				var m = Math.floor(s / 60);
+				var h = Math.floor(m / 60);
+				var d = Math.floor(h / 24);
+
+				h %= 24;
+				m %= 60;
+				s %= 60;
+				
+
+				h = (h < 10) ? "0" + h : h;
+				m = (m < 10) ? "0" + m : m;
+				s = (s < 10) ? "0" + s : s;
+				
+
+				document.getElementById("days").textContent = d;
+				document.getElementById("days").innerText = d;
+				document.getElementById("hours").textContent = h;
+				document.getElementById("minutes").textContent = m;
+				document.getElementById("seconds").textContent = s;
+
+				setTimeout(countdown, 1000);
+			}
+
+			countdown();
+</script>
+</body>
+</html>
