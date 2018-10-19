@@ -25,10 +25,13 @@ snowStorm.snowColor = '#e7def9';
 snowStorm.flakesMaxActive = 96;  
 snowStorm.useTwinkleEffect = false;
 </script>
+<h1 id="Hype"></h1>
+
 <script>
 	var jingle =new Audio();
 	jingle.src = 'jingle.wav' 
 </script>
+
 <ul id="ul">
   <li><a href="#hohoho" onmousedown="jingle.play();">Ho ho ho</a></li>
 </ul>
@@ -36,13 +39,6 @@ snowStorm.useTwinkleEffect = false;
 // <![CDATA[
 var colour="lightyellow";
 var sparkles=120;
-
-/****************************
-*  Tinkerbell Magic Sparkle *
-* (c) 2005 mf2fm web-design *
-*  http://www.mf2fm.com/rv  *
-* DON'T EDIT BELOW THIS BOX *
-****************************/
 var x=ox=400;
 var y=oy=300;
 var swide=800;
@@ -206,7 +202,7 @@ function createDiv(height, width) {
 
 <style type="text/css">
 		body {
-			background: #000000;
+			background:url("u.png");
 		}
 		.countdownContainer{
 			position: absolute;;
@@ -216,7 +212,6 @@ function createDiv(height, width) {
 			transform : translateX(-50%)
 			translateY(-50%);
 			text-align: center;
-			background-image: radial-gradient(circle,#08d612,#005b21);
 			padding: 20px;
 			text-shadow: 3px 1px black;
 			font-family: 'Lobster', cursive;
@@ -229,6 +224,9 @@ function createDiv(height, width) {
 		#p {
 			color:red;
 		}
+    #Hype{
+      text-align: center;
+    }
 		.info {
 			font-size: 75px;
 			
