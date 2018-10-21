@@ -1,3 +1,6 @@
+html {
+	overflow-x: hidden;
+}
 body {
 	background-image: url(n.png); 
     background-repeat: no-repeat; 
@@ -30,7 +33,10 @@ body {
 	color:red;
 }
 #Hype{
-    text-align: right;
+	float: right;
+    margin-right:35px;
+    font-size: 25px;
+    font-family: 'Mali';
 }
 .info {
 	font-size: 80px;	
