@@ -1,6 +1,6 @@
 html {
 	background: url(n.png) no-repeat center center fixed;
-    -webkit-background-size: cover;
+    -webkit-background-size: 100% 100%;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: 100% 100%;
