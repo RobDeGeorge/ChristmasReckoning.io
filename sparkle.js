@@ -1,4 +1,3 @@
-<script>
 
 var colour="blue"
 var sparkles=120;
@@ -161,4 +160,3 @@ function createDiv(height, width) {
   return (div);
 }
 // ]]>
-</script>

@@ -1,4 +1,4 @@
-<script>
+
 	function countdown(){
 		var now = new Date();
 		var eventDate = new Date(now.getFullYear(), 11, 25);
@@ -32,4 +32,3 @@
 	}
 
 	countdown();
-</script>
