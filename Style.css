@@ -40,7 +40,7 @@
 
 .topnav{
 	background-color: transparent;
-	height: 34pt;
+	height: 4%;
 	position: center;
 	text-align: center;
 }
@@ -82,3 +82,38 @@ html{
 		background-position-y:bottom;
 
 	}
+
+.form1Container{
+	position: absolute;;
+	color: #f7ecad;
+	top: 50%;
+	left: 50%;
+	transform : translateX(-50%)
+	translateY(-50%);
+	text-shadow: 3px 1px black;
+	font-family: 'Lobster', cursive;
+
+}
+
+.question{
+	font-size: 20px;
+	color: white;
+
+}
+
+.answer{
+	width: 120%;
+
+}
+
+.answer2{
+	height: 300px;
+	width: 120%;
+	text-align: left;
+}
+
+.button{
+	text-align: center;
+	width: 121.2%;
+	height: 20px;
+}
