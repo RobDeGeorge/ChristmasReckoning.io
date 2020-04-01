@@ -1,20 +1,18 @@
 
 
-
-
-
-head{
 	.countdownContainer{
 	position: absolute;;
 	color: #f7ecad;
-	top: 50%;
+	top: 28.5%;
 	left: 50%;
 	transform : translateX(-50%)
 	translateY(-50%);
 	text-align: center;
 	text-shadow: 3px 1px black;
 	font-family: 'Lobster', cursive;
-	}
+	
+}
+
 	#R {
 		color: red;
 		text-shadow: 3px 2px black;
@@ -39,13 +37,16 @@ head{
 		text-shadow: 1px 1px black;
 	}
 
-}
-html {
-		background: url(n.png) no-repeat center center fixed;
+
+ html{
+		background: url(n.png) no-repeat;
     	-webkit-background-size: 100% 80%;
     	-moz-background-size: cover;
     	-o-background-size: cover;
-    	background-size: 100% 100%;
+    	background-size: 100% 60%;
     	height: 100%;
     	overflow: hidden;
 		overflow-x: hidden;
+
+	}
+
